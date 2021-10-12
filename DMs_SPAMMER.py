@@ -65,7 +65,7 @@ async def on_ready():
         else:
             try:
                 await chupapi.send(message)
-                print(f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[+] Sent DM to {Fore.YELLOW}{chupapi}{Fore.LIGHTGREEN_EX} {indx} / {len(data)}")
+                print(f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[+] Sent {message} to {Fore.YELLOW}{chupapi}{Fore.LIGHTGREEN_EX} {indx} / {len(data)}")
                 await asyncio.sleep(cooldown)
             except discord.Forbidden as e:
                 if e.code == 40003:
