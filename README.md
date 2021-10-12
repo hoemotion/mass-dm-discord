@@ -2,7 +2,7 @@
 
 <img src="https://cdn.discordapp.com/attachments/890913525017505792/897472933344198676/unknown.png" width="650"/>
 <img src="https://cdn.discordapp.com/attachments/890913525017505792/897473943596838912/unknown.png" width="650"/>
-> Little preview of the Logger and the Spammer
+- Little preview of the Logger and the Spammer
                 
 				
 ![](https://img.shields.io/badge/release-v1.0-blue)
