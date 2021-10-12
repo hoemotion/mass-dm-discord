@@ -78,7 +78,7 @@ bot = discord.Client()
 async def on_ready():
     await bot.change_presence(status=discord.Status.idle)
     print(f'{Fore.LIGHTGREEN_EX}Logged in as: {Fore.YELLOW}"{bot.user}" {Fore.LIGHTGREEN_EX}| ID: {Fore.YELLOW}"{bot.user.id}"{Fore.LIGHTGREEN_EX}\nConnected with {Fore.YELLOW}{len(bot.guilds)}{Fore.LIGHTGREEN_EX} Guilds and {Fore.YELLOW}{len(bot.user.friends)} {Fore.LIGHTGREEN_EX}Friends')
-    print(f' {Fore.LIGHTYELLOW_EX}[⚡] Started logging IDs\n')
+    print(f'{Fore.LIGHTYELLOW_EX}[⚡] Started logging IDs\n')
 
 @bot.event
 async def on_message(message):
