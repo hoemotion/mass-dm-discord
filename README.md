@@ -24,8 +24,9 @@
  
 <a href = "https://discord.gg/NsRSaQNbYa"><img src="https://img.icons8.com/color/48/000000/discord.png"/></a>
 
-## Please use this tool for educational purposes only
 
 ## Credits:
 
 - This Repo is based on this one: https://github.com/logicguy1/Mass-Dm-Self-Bot/
+
+## Please use this tool for educational purposes only
