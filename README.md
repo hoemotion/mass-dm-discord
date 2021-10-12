@@ -1,7 +1,7 @@
 # mass-dm-discord
 
 <img src="https://cdn.discordapp.com/attachments/890913525017505792/897472933344198676/unknown.png" width="650"/>
-<img src="https://cdn.discordapp.com/attachments/890913525017505792/897475857008980009/unknown.png" width="650"/>
+<img src="https://cdn.discordapp.com/attachments/819202559789105182/897476977659904020/unknown.png" width="650"/>
 - Little preview of the Logger and the Spammer
                 
 				
