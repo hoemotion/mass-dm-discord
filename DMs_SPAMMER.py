@@ -24,7 +24,7 @@ sys.tracebacklimit = 0
 bot = discord.Client()
 
 token = input(pyfade.Fade.Horizontal(pyfade.Colors.col, f"Please enter your token>> "))
-cooldown = int(input(f"{Fore.LIGHTWHITE_EX}Enter your cooldown>> "))
+cooldown = int(input(f"{Fore.LIGHTWHITE_EX}Enter your cooldown (time in seconds)>> "))
 message = input(f"{Fore.LIGHTWHITE_EX}What Should I Send?>> ")
 
 print(pyfade.Fade.Horizontal(pyfade.Colors.blue_to_cyan, '''
@@ -65,8 +65,8 @@ async def on_ready():
         else:
             try:
                 await chupapi.send(message)
-                await asyncio.sleep(cooldown)
                 print(f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[+] Sent DM to {Fore.YELLOW}{chupapi}{Fore.LIGHTGREEN_EX} {indx} / {len(data)}")
+                await asyncio.sleep(cooldown)
             except discord.Forbidden as e:
                 if e.code == 40003:
                     print(f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nMass DM will be continued in 2 minutes - {Fore.RED}{e}")
