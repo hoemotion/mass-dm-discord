@@ -1,29 +1,20 @@
-import sys
-import subprocess
+import sys, subprocess, json, time, asyncio
 try:
-    import discord
+    import discord, colorama, pyfade
 except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", 'discord.py'])
-import discord
-from discord.ext import commands
-import json
-try:
-    import colorama
-except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", 'colorama'])
+    subprocess.check_call([sys.executable, "-m", "pip", "install", 'pyfade'])
+from discord.ext import commands
 from colorama import Fore
 from datetime import datetime
-import asyncio
-import time
-try:
-    import pyfade
-except ImportError:
-    subprocess.check_call([sys.executable, "-m", "pip", "install", 'pyfade'])
 
 sys.tracebacklimit = 0
 blacklisted_servers = []
+with open('config.json') as f:
+    yamete_kudasai = json.load(f)
+token = yamete_kudasai['token']
 
-token = input(pyfade.Fade.Horizontal(pyfade.Colors.col, f"Please enter your token>> "))
 print(pyfade.Fade.Horizontal(pyfade.Colors.cyan_to_blue, '''
 
 ██╗██████╗         ██╗      █████╗  ██████╗  ██████╗ ███████╗██████╗ 
@@ -31,10 +22,8 @@ print(pyfade.Fade.Horizontal(pyfade.Colors.cyan_to_blue, '''
 ██║██║  ██║        ██║     ██║  ██║██║  ██╗ ██║  ██╗ █████╗  ██████╔╝
 ██║██║  ██║        ██║     ██║  ██║██║  ╚██╗██║  ╚██╗██╔══╝  ██╔══██╗
 ██║██████╔╝        ███████╗╚█████╔╝╚██████╔╝╚██████╔╝███████╗██║  ██║
-╚═╝╚═════╝         ╚══════╝ ╚════╝  ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝
-'''))
-print(f'''
-{Fore.LIGHTWHITE_EX}                                                    Made by {Fore.YELLOW}hoemotion 
+╚═╝╚═════╝         ╚══════╝ ╚════╝  ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝'''))
+print(f'''{Fore.LIGHTWHITE_EX}                                                    Made by {Fore.YELLOW}hoemotion 
 {Fore.LIGHTWHITE_EX}Check out the github page for updates: {Fore.LIGHTBLUE_EX}https://github.com/hoemotion/mass-dm-discord/  
 ''')
 
@@ -63,9 +52,9 @@ def log_id(id, name, discriminator, guild):
                 json.dump(data, file)
 
             try:
-                print(f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[{guild}] {id} - {name}#{discriminator} Total: {len(data)}")
+                print(f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[{Fore.YELLOW}{guild}{Fore.LIGHTGREEN_EX}] {Fore.YELLOW}{id} {Fore.LIGHTGREEN_EX}- {Fore.YELLOW}{name}#{discriminator}{Fore.LIGHTGREEN_EX} Total:{Fore.YELLOW} {len(data)}")
             except AttributeError:
-                print(f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX} {id} - {name}#{discriminator} Total: {len(data)}")
+                print(f"{Fore.BLUE}{current_time} {Fore.YELLOW} {id} {Fore.LIGHTGREEN_EX}- {Fore.YELLOW}{name}#{discriminator} {Fore.LIGHTGREEN_EX}Total: {Fore.YELLOW}{len(data)}")
             except:
                 pass
 
@@ -76,6 +65,7 @@ bot = discord.Client()
 
 @bot.event
 async def on_ready():
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="github.com/hoemotion️"))
     await bot.change_presence(status=discord.Status.idle)
     print(f'{Fore.LIGHTGREEN_EX}Logged in as: {Fore.YELLOW}"{bot.user}" {Fore.LIGHTGREEN_EX}| ID: {Fore.YELLOW}"{bot.user.id}"{Fore.LIGHTGREEN_EX}\nConnected with {Fore.YELLOW}{len(bot.guilds)}{Fore.LIGHTGREEN_EX} Guilds and {Fore.YELLOW}{len(bot.user.friends)} {Fore.LIGHTGREEN_EX}Friends')
     print(f'{Fore.LIGHTYELLOW_EX}[⚡] Started logging IDs\n')
@@ -117,6 +107,23 @@ async def on_delete(message):
                 pass
         except AttributeError:
             pass
+
+@bot.event
+async def on_raw_reaction_add(payload):
+    await asyncio.sleep(0.1)
+    try:
+        if payload.member.guild.id in blacklisted_servers:
+            return
+        else:
+            pass
+        try:
+            if not payload.member.bot:
+                log_id(payload.member.id, payload.member.name, payload.member.discriminator, payload.member.guild.name)
+        except:
+            pass
+    except:
+        pass
+
 
 @bot.event
 async def on_edit(message):
@@ -228,5 +235,3 @@ async def on_reaction_add(reaction, member):
         pass
 
 bot.run(token, bot=False)
-
-
