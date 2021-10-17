@@ -10,7 +10,6 @@ from colorama import Fore
 from datetime import datetime
 
 sys.tracebacklimit = 0
-blacklisted_servers = []
 with open('config.json') as f:
     yamete_kudasai = json.load(f)
 token = yamete_kudasai['token']
@@ -67,14 +66,16 @@ bot = discord.Client()
 async def on_ready():
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="github.com/hoemotion️"))
     await bot.change_presence(status=discord.Status.idle)
-    print(f'{Fore.LIGHTGREEN_EX}Logged in as: {Fore.YELLOW}"{bot.user}" {Fore.LIGHTGREEN_EX}| ID: {Fore.YELLOW}"{bot.user.id}"{Fore.LIGHTGREEN_EX}\nConnected with {Fore.YELLOW}{len(bot.guilds)}{Fore.LIGHTGREEN_EX} Guilds and {Fore.YELLOW}{len(bot.user.friends)} {Fore.LIGHTGREEN_EX}Friends')
+    print(f'{Fore.LIGHTGREEN_EX}Logged in as: {Fore.YELLOW}"Example-User#1234" {Fore.LIGHTGREEN_EX}| ID: {Fore.YELLOW}"52525525252134"{Fore.LIGHTGREEN_EX}\nConnected with {Fore.YELLOW}{len(bot.guilds)}{Fore.LIGHTGREEN_EX} Guilds and {Fore.YELLOW}{len(bot.user.friends)} {Fore.LIGHTGREEN_EX}Friends')
     print(f'{Fore.LIGHTYELLOW_EX}[⚡] Started logging IDs\n')
 
 @bot.event
 async def on_message(message):
     await asyncio.sleep(0.1)
     try:
-        if message.guild.id in blacklisted_servers:
+        with open('blacklistedservers.json') as f:
+            banned_servers = json.load(f)
+        if message.guild.id in banned_servers:
             return
         else:
             pass
@@ -96,23 +97,31 @@ async def on_message(message):
 @bot.event
 async def on_delete(message):
     await asyncio.sleep(0.1)
-    if message.guild.id in blacklisted_servers:
-        return
-    else:
-        pass
-        try:
-            if not message.author.bot:
-                log_id(message.author.id, message.author.name, message.author.discriminator, message.author.guild.name)
-            if message.author.bot:
-                pass
-        except AttributeError:
+    try:
+        with open('blacklistedservers.json') as f:
+            banned_servers = json.load(f)
+        if message.guild.id in banned_servers:
+            return
+        else:
             pass
+            try:
+                if not message.author.bot:
+                    log_id(message.author.id, message.author.name, message.author.discriminator,
+                           message.author.guild.name)
+                if message.author.bot:
+                    pass
+            except AttributeError:
+                pass
+    except:
+        pass
 
 @bot.event
 async def on_raw_reaction_add(payload):
     await asyncio.sleep(0.1)
     try:
-        if payload.member.guild.id in blacklisted_servers:
+        with open('blacklistedservers.json') as f:
+            banned_servers = json.load(f)
+        if payload.member.guild.id in banned_servers:
             return
         else:
             pass
@@ -129,7 +138,9 @@ async def on_raw_reaction_add(payload):
 async def on_edit(message):
     await asyncio.sleep(0.1)
     try:
-        if message.guild.id in blacklisted_servers:
+        with open('blacklistedservers.json') as f:
+            banned_servers = json.load(f)
+        if message.guild.id in banned_servers:
             return
         else:
             pass
@@ -148,7 +159,9 @@ async def on_edit(message):
 async def on_member_join(member):
     await asyncio.sleep(0.1)
     try:
-        if member.guild.id in blacklisted_servers:
+        with open('blacklistedservers.json') as f:
+            banned_servers = json.load(f)
+        if member.guild.id in banned_servers:
             return
         else:
             pass
@@ -166,7 +179,9 @@ async def on_member_join(member):
 async def on_member_remove(user):
     await asyncio.sleep(0.1)
     try:
-        if user.guild.id in blacklisted_servers:
+        with open('blacklistedservers.json') as f:
+            banned_servers = json.load(f)
+        if user.guild.id in banned_servers:
             return
         else:
             pass
@@ -184,7 +199,9 @@ async def on_member_remove(user):
 async def on_member_update(before, after):
     await asyncio.sleep(0.1)
     try:
-        if after.member.guild.id in blacklisted_servers:
+        with open('blacklistedservers.json') as f:
+            banned_servers = json.load(f)
+        if after.member.guild.id in banned_servers:
             return
         else:
             pass
@@ -202,7 +219,9 @@ async def on_member_update(before, after):
 async def on_voice_state_update(user, before, after):
     await asyncio.sleep(0.1)
     try:
-        if after.user.guild.id in blacklisted_servers:
+        with open('blacklistedservers.json') as f:
+            banned_servers = json.load(f)
+        if after.user.guild.id in banned_servers:
             return
         else:
             pass
@@ -220,7 +239,9 @@ async def on_voice_state_update(user, before, after):
 async def on_reaction_add(reaction, member):
     await asyncio.sleep(0.1)
     try:
-        if member.guild.id in blacklisted_servers:
+        with open('blacklistedservers.json') as f:
+            banned_servers = json.load(f)
+        if member.guild.id in banned_servers:
             return
         else:
             pass
