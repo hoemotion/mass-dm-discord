@@ -1,5 +1,4 @@
 import sys, subprocess, random, json, asyncio, os
-from discord.ext import commands
 try:
     import colorama, pyfade, discord
 except ImportError:
@@ -9,6 +8,7 @@ except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", 'discord'])
 from colorama import Fore
 from datetime import datetime
+from discord.ext import commands
 
 sys.tracebacklimit = 0
 bot = discord.Client()
