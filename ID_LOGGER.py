@@ -66,7 +66,7 @@ bot = discord.Client()
 async def on_ready():
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="github.com/hoemotion️"))
     await bot.change_presence(status=discord.Status.idle)
-    print(f'{Fore.LIGHTGREEN_EX}Logged in as: {Fore.YELLOW}"Example-User#1234" {Fore.LIGHTGREEN_EX}| ID: {Fore.YELLOW}"52525525252134"{Fore.LIGHTGREEN_EX}\nConnected with {Fore.YELLOW}{len(bot.guilds)}{Fore.LIGHTGREEN_EX} Guilds and {Fore.YELLOW}{len(bot.user.friends)} {Fore.LIGHTGREEN_EX}Friends')
+    print(f'{Fore.LIGHTGREEN_EX}Logged in as: {Fore.YELLOW}"{client.user}" {Fore.LIGHTGREEN_EX}| ID: {Fore.YELLOW}"{client.user.id}"{Fore.LIGHTGREEN_EX}\nConnected with {Fore.YELLOW}{len(bot.guilds)}{Fore.LIGHTGREEN_EX} Guilds and {Fore.YELLOW}{len(bot.user.friends)} {Fore.LIGHTGREEN_EX}Friends')
     print(f'{Fore.LIGHTYELLOW_EX}[⚡] Started logging IDs\n')
 
 @bot.event
