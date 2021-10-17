@@ -15,8 +15,8 @@ bot = discord.Client()
 with open('config.json') as f:
     yamete_kudasai = json.load(f)
 token = yamete_kudasai['token']
-cooldown = yamete_kudasai['cooldown']
-cooldown_max = cooldown + 10
+cooldown = yamete_kudasai['min_cooldown']
+cooldown_max = yamete_kudasai['max_cooldown']
 message = yamete_kudasai['message']
 duplicate = yamete_kudasai['dm_already_dmed_users']
 if duplicate == "True":
@@ -38,7 +38,7 @@ print(f'''{Fore.LIGHTWHITE_EX}                                             Made 
 @bot.event
 async def on_ready():
     await bot.change_presence(status=discord.Status.idle)
-    print(f'{Fore.LIGHTGREEN_EX}Logged in as: {Fore.YELLOW}"{bot.user}" {Fore.LIGHTGREEN_EX}| ID: {Fore.YELLOW}"{bot.user.id}"{Fore.LIGHTGREEN_EX}\nConnected with {Fore.YELLOW}{len(bot.guilds)}{Fore.LIGHTGREEN_EX} Guilds and {Fore.YELLOW}{len(bot.user.friends)} {Fore.LIGHTGREEN_EX}Friends')
+    print(f'{Fore.LIGHTGREEN_EX}Logged in as: {Fore.YELLOW}"Example-User#1234" {Fore.LIGHTGREEN_EX}| ID: {Fore.YELLOW}"52525525252134"{Fore.LIGHTGREEN_EX}\nConnected with {Fore.YELLOW}{len(bot.guilds)}{Fore.LIGHTGREEN_EX} Guilds and {Fore.YELLOW}{len(bot.user.friends)} {Fore.LIGHTGREEN_EX}Friends')
     print(f'{Fore.LIGHTYELLOW_EX}[⚡] Started sending DMs to the IDs\n')
 
     with open("ids.json", "r") as file:
@@ -62,6 +62,30 @@ async def on_ready():
             if chupapi.id in penis:
                 print(f"{Fore.BLUE}{current_time} {Fore.LIGHTMAGENTA_EX}[x] Avoiding Duplicates: {Fore.YELLOW}{chupapi} {Fore.BLACK}{indx} / {len(data)}")
                 await asyncio.sleep(2)
+            else:
+                try:
+                    await chupapi.send(message)
+                    print(
+                        f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[+] Sent {message} to {Fore.YELLOW}{chupapi}{Fore.LIGHTGREEN_EX} {indx} / {len(data)}")
+                    await asyncio.sleep(random.randint(cooldown, cooldown_max))
+                except discord.Forbidden as e:
+                    if e.code == 40003:
+                        print(
+                            f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 45 seconds - {Fore.RED}{e}")
+                        await asyncio.sleep(45)
+                        os.execv(sys.executable, ['python'] + sys.argv)
+                        continue
+                    else:
+                        print(
+                            f"{Fore.BLUE}{current_time} {Fore.RED}[-] Couldn\'t send a DM to {Fore.YELLOW}{chupapi}{Fore.RED} - {e} {indx} / {len(data)}")
+                        await asyncio.sleep(random.randint(cooldown, cooldown_max))
+                if chupapi.id not in penis:
+                    await asyncio.sleep(0.01)
+                    penis.append(chupapi.id)
+
+                    with open("alreadyusedids.json", "w") as file:
+                        await asyncio.sleep(0.01)
+                        json.dump(penis, file)
         else:
             try:
                 await chupapi.send(message)
@@ -83,8 +107,7 @@ async def on_ready():
                 with open("alreadyusedids.json", "w") as file:
                     await asyncio.sleep(0.01)
                     json.dump(penis, file)
-
     input(f"{Fore.LIGHTGREEN_EX}Press Enter 5 times to close the program.")
     [input(i) for i in range(4, 0, -1)]
-    raise SystemExit
+
 bot.run(token, bot = False)
