@@ -1,5 +1,5 @@
 {"token": "Your Token Here (Don't worry, I'm not a 12 y/o scammer)",
-"min_cooldown": 30,
-"max_cooldown": 45,
+"min_cooldown": 45,
+"max_cooldown": 90,
 "dm_already_dmed_users": "False",
 "message": "1st Line\n2nd Line\nExample"}
