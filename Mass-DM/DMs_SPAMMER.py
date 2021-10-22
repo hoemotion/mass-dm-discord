@@ -160,14 +160,6 @@ async def mass_dm_embed():
         blcklstdata = json.load(file)
     with open("alreadyusedids.json", "r") as file:
         penis = json.load(file)
-    embed = discord.Embed(
-        title=f"{embed_title}",
-        description=f"{embed_description}",
-        color=discord.Colour.random())
-    embed.set_thumbnail(url=f"{embed_thumbnail_url}"),
-    embed.set_image(url=f"{embed_image_url}"),
-    embed.set_author(name=f"{embed_author}", icon_url=embed_author_icon_url)
-    embed.set_footer(text=f"{embed_footer}", icon_url=embed_footer_icon_url)
 
     indx = 0
     for i in data:
@@ -198,6 +190,14 @@ async def mass_dm_embed():
                     print(f"{Fore.RED}[FETCH USERS ERROR]")
                     error_msg()
             else:
+                embed = discord.Embed(
+                    title=f"{embed_title}",
+                    description=f"{embed_description}",
+                    color=discord.Colour.random())
+                embed.set_thumbnail(url=f"{embed_thumbnail_url}"),
+                embed.set_image(url=f"{embed_image_url}"),
+                embed.set_author(name=f"{embed_author}", icon_url=embed_author_icon_url)
+                embed.set_footer(text=f"{embed_footer}", icon_url=embed_footer_icon_url)
                 chupapi = await bot.fetch_user(i)
                 try:
                     await chupapi.send(embed=embed)
