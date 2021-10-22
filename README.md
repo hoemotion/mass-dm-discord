@@ -1,19 +1,21 @@
 # mass-dm-discord
 
-<img src="https://cdn.discordapp.com/attachments/890913525017505792/899288362832244776/unknown.png" width="650"/>
-<img src="https://cdn.discordapp.com/attachments/890913525017505792/899287524470562856/unknown.png" width="650"/>
-- Little preview of the Logger and the Spammer
+<img src="https://cdn.discordapp.com/attachments/821292429470466078/901142180461166662/unknown.png" width="650"/>
+<img src="https://cdn.discordapp.com/attachments/821292429470466078/901141863581499412/unknown.png" width="650"/>
+<img src="https://cdn.discordapp.com/attachments/821292429470466078/901141802726330408/unknown.png" width="300"/>
+- Little preview of the Logger and the Spammer adn the Embed too
                 
 				
-![](https://img.shields.io/badge/release-v1.2-blue)
+![](https://img.shields.io/badge/release-v1.2.5-blue)
 
 
 ### Features
 
 - Logging User IDS
-- Sending DMs to the logged IDs
-- Blacklist IDs (add the ID of the User you don't want to dm inside of the blacklistedids.json file)
-- Blacklist Servers (You have to do that in ID_LOGGER.py, line 24)
+- Sending DMs (Embeds are supported) to the logged IDs
+- Blacklist User IDs (add the ID of the User you don't want to dm inside of the blacklistedids.json file) [OPTIONAL]
+- Blacklist Servers (You have to add the Server IDs to the blacklistedservers.json file) [OPTIONAL]
+- Whitelist Servers (You have to add the Server IDs to the whitelistedservers.json file) [OPTIONAL]
 
 ### Don't forget to leave a Star!
 
