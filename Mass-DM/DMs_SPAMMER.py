@@ -164,18 +164,10 @@ async def mass_dm_embed():
         title=embed_title,
         descrtiption=embed_description,
         color=discord.Colour.random())
-    if embed_thumbnail_url != "":
-        embed.set_thumbnail(url=f"{embed_thumbnail_url}"),
-    if embed_image_url != "":
-        embed.set_image(url=f"{embed_image_url}"),
-    if embed_author_icon_url != "":
-        embed.set_author(name=f"{embed_author}")
-    else:
-        embed.set_author(name=f"{embed_author}", icon_url=f"{embed_author_icon_url}")
-    if embed_footer_icon_url != "":
-        embed.set_footer(text=f"{embed_footer}")
-    else:
-        embed.set_author(text=f"{embed_author}", icon_url=f"{embed_footer_icon_url}")
+    embed.set_thumbnail(url=f"{embed_thumbnail_url}"),
+    embed.set_image(url=f"{embed_image_url}"),
+    embed.set_author(name=f"{embed_author}", icon_url=embed_author_icon_url)
+    embed.set_footer(text=f"{embed_footer}", icon_url=embed_footer_icon_url)
 
     indx = 0
     for i in data:
@@ -208,7 +200,7 @@ async def mass_dm_embed():
             else:
                 chupapi = await bot.fetch_user(i)
                 try:
-                    await chupapi.send(embed)
+                    await chupapi.send(embed=embed)
                     print(
                         f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[+] Sent the embed to {Fore.YELLOW}{chupapi}{Fore.LIGHTGREEN_EX} {indx} / {len(data)}")
                     pablo = random.randint(cooldown, cooldown_max)
