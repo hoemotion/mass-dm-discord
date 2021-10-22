@@ -37,7 +37,6 @@ embed_footer = yamete_kudasai['embed_footer']
 embed_footer_icon_url = yamete_kudasai['embed_footer_icon_url']
 embed_thumbnail_url = yamete_kudasai['embed_thumbnail_url']
 embed_image_url = yamete_kudasai['embed_image_url']
-embed_color = yamete_kudasai['embed_color']
 if duplicate == "True":
     munanyo = "True"
 elif duplicate == "False":
@@ -164,7 +163,7 @@ async def mass_dm_embed():
     embed = discord.Embed(
         title=embed_title,
         descrtiption=embed_description,
-        color=embed_color, )
+        color=discord.Colour.random())
     if embed_thumbnail_url != "":
         embed.set_thumbnail(url=f"{embed_thumbnail_url}"),
     if embed_image_url != "":
