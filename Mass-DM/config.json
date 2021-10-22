@@ -4,7 +4,7 @@
 "dm_already_dmed_users": "False",
 "always_fetch_users": "False",
 "display_sleep": "True",
-"whitelisted_servers_only": "alse",
+"whitelisted_servers_only": "False",
 "message": "Example Message",
 "send_embed":  "False",
 "embed_title": "Example Title",
