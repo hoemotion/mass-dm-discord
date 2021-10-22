@@ -6,13 +6,13 @@
 "display_sleep": "True",
 "whitelisted_servers_only": "False",
 "message": "Example Message",
-"send_embed":  "False",
+"send_embed": "False",
 "embed_title": "Example Title",
-"embed_description":  "Example Description",
+"embed_description": "Example Description",
 "embed_author": "hoemotion",
-"embed_author_icon_url":  "https://cdn.discordapp.com/attachments/890913525017505792/897460156814737438/karma.snow.gif",
+"embed_author_icon_url": "https://cdn.discordapp.com/attachments/890913525017505792/897460156814737438/karma.snow.gif",
 "embed_footer":  "Made by hoemotion - https://github.com/hoemotion",
-"embed_footer_icon_url":  "https://cdn.discordapp.com/attachments/890913525017505792/897460156814737438/karma.snow.gif",
-"embed_thumbnail_url":  "https://cdn.discordapp.com/attachments/890913525017505792/897460156814737438/karma.snow.gif",
-"embed_image_url":  "https://cdn.discordapp.com/attachments/890913525017505792/897460156814737438/karma.snow.gif"
+"embed_footer_icon_url": "https://cdn.discordapp.com/attachments/890913525017505792/897460156814737438/karma.snow.gif",
+"embed_thumbnail_url": "https://cdn.discordapp.com/attachments/890913525017505792/897460156814737438/karma.snow.gif",
+"embed_image_url": "https://cdn.discordapp.com/attachments/890913525017505792/897460156814737438/karma.snow.gif"
 }
