@@ -161,8 +161,8 @@ async def mass_dm_embed():
     with open("alreadyusedids.json", "r") as file:
         penis = json.load(file)
     embed = discord.Embed(
-        title=embed_title,
-        descrtiption=embed_description,
+        title=f"{embed_title}",
+        description=f"{embed_description}",
         color=discord.Colour.random())
     embed.set_thumbnail(url=f"{embed_thumbnail_url}"),
     embed.set_image(url=f"{embed_image_url}"),
@@ -284,13 +284,13 @@ async def on_ready():
     if send_embed == "False":
         await bot.change_presence(status=discord.Status.idle)
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="github.com/hoemotion"))
-        print(f'{Fore.LIGHTGREEN_EX}Logged in as: {Fore.YELLOW}"{bot.user}" {Fore.LIGHTGREEN_EX}| ID: {Fore.YELLOW}"{bot.user.id}"{Fore.LIGHTGREEN_EX}\nConnected with {Fore.YELLOW}{len(bot.guilds)}{Fore.LIGHTGREEN_EX} Guilds and {Fore.YELLOW}{len(bot.user.friends)} {Fore.LIGHTGREEN_EX}Friends')
+        print(f'{Fore.LIGHTGREEN_EX}Logged in as: {Fore.YELLOW}"Example-User#1234" {Fore.LIGHTGREEN_EX}| ID: {Fore.YELLOW}"253454234534523"{Fore.LIGHTGREEN_EX}\nConnected with {Fore.YELLOW}{len(bot.guilds)}{Fore.LIGHTGREEN_EX} Guilds and {Fore.YELLOW}{len(bot.user.friends)} {Fore.LIGHTGREEN_EX}Friends')
         print(f'{Fore.LIGHTYELLOW_EX}[⚡] Started sending DMs to the IDs\n')
         await mass_dm()
     elif send_embed == "True":
         await bot.change_presence(status=discord.Status.idle)
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="github.com/hoemotion"))
-        print(f'{Fore.LIGHTGREEN_EX}Logged in as: {Fore.YELLOW}"{bot.user}" {Fore.LIGHTGREEN_EX}| ID: {Fore.YELLOW}"{bot.user.id}"{Fore.LIGHTGREEN_EX}\nConnected with {Fore.YELLOW}{len(bot.guilds)}{Fore.LIGHTGREEN_EX} Guilds and {Fore.YELLOW}{len(bot.user.friends)} {Fore.LIGHTGREEN_EX}Friends')
+        print(f'{Fore.LIGHTGREEN_EX}Logged in as: {Fore.YELLOW}"Example-User#1234" {Fore.LIGHTGREEN_EX}| ID: {Fore.YELLOW}"253454234534523"{Fore.LIGHTGREEN_EX}\nConnected with {Fore.YELLOW}{len(bot.guilds)}{Fore.LIGHTGREEN_EX} Guilds and {Fore.YELLOW}{len(bot.user.friends)} {Fore.LIGHTGREEN_EX}Friends')
         print(f'{Fore.LIGHTYELLOW_EX}[⚡] Started sending Embed Messages to the IDs\n')
         await mass_dm_embed()
     else:
