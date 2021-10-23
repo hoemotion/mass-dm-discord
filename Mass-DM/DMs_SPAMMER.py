@@ -117,7 +117,6 @@ async def mass_dm():
                     with open("alreadyusedids.json", "w") as file:
                         await asyncio.sleep(0.01)
                         json.dump(penis, file)
-                penis.close()
         else:
             try:
                 chupapi = await bot.fetch_user(i)
@@ -150,7 +149,6 @@ async def mass_dm():
                 with open("alreadyusedids.json", "w") as file:
                     await asyncio.sleep(0.01)
                     json.dump(penis, file)
-            penis.close()
 
     input(f"{Fore.LIGHTGREEN_EX}Press Enter 5 times to close the program.")
     [input(i) for i in range(4, 0, -1)]
@@ -234,7 +232,6 @@ async def mass_dm_embed():
                     with open("alreadyusedids.json", "w") as file:
                         await asyncio.sleep(0.01)
                         json.dump(penis, file)
-                penis.close()
         else:
             try:
                 chupapi = await bot.fetch_user(i)
@@ -267,7 +264,6 @@ async def mass_dm_embed():
                 with open("alreadyusedids.json", "w") as file:
                     await asyncio.sleep(0.01)
                     json.dump(penis, file)
-            penis.close()
 
     input(f"{Fore.LIGHTGREEN_EX}Press Enter 5 times to close the program.")
     [input(i) for i in range(4, 0, -1)]
