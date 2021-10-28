@@ -405,22 +405,22 @@ async def on_member_update(before, after):
             pass
 
 @bot.event
-async def on_voice_state_update(user, before, after):
+async def on_voice_state_update(member, before, after):
     if whitelist == "True":
         with open('whitelistedservers.json') as f:
             whitlisted_servers = json.load(f)
-        if before.user.guild.id in whitlisted_servers:
+        if before.member.guild.id in whitlisted_servers:
             await asyncio.sleep(0.1)
             try:
                 with open('blacklistedservers.json') as f:
                     banned_servers = json.load(f)
-                if after.user.guild.id in banned_servers:
+                if after.member.guild.id in banned_servers:
                     return
                 else:
                     pass
                     try:
-                        if not user.bot:
-                            log_id(user.id, user.name, user.discriminator, user.guild.name)
+                        if not member.bot:
+                            log_id(member.id, member.name, member.discriminator, member.guild.name)
                         if user.bot:
                             pass
                     except AttributeError:
@@ -434,13 +434,13 @@ async def on_voice_state_update(user, before, after):
         try:
             with open('blacklistedservers.json') as f:
                 banned_servers = json.load(f)
-            if after.user.guild.id in banned_servers:
+            if after.member.guild.id in banned_servers:
                 return
             else:
                 pass
                 try:
-                    if not user.bot:
-                        log_id(user.id, user.name, user.discriminator, user.guild.name)
+                    if not member.bot:
+                        log_id(member.id, member.name, member.discriminator, member.guild.name)
                     if user.bot:
                         pass
                 except AttributeError:
