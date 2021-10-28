@@ -409,7 +409,7 @@ async def on_voice_state_update(user, before, after):
     if whitelist == "True":
         with open('whitelistedservers.json') as f:
             whitlisted_servers = json.load(f)
-        if before.member.guild.id in whitlisted_servers:
+        if before.user.guild.id in whitlisted_servers:
             await asyncio.sleep(0.1)
             try:
                 with open('blacklistedservers.json') as f:
