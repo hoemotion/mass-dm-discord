@@ -3,7 +3,7 @@
 <img src="https://cdn.discordapp.com/attachments/821292429470466078/901142180461166662/unknown.png" width="600"/>
 <img src="https://cdn.discordapp.com/attachments/821292429470466078/901141863581499412/unknown.png" width="600"/>
 <img src="https://media.discordapp.net/attachments/821292429470466078/901151226987692072/unknown.png" width="300"/>
-- Little preview of the Logger and the Spammer adn the Embed too
+- Little preview of the Logger and the Spammer and the Embed too
                 
 				
 ![](https://img.shields.io/badge/release-v1.2.5-blue)
@@ -25,6 +25,11 @@
 - This is my Support-Server:
  
 <a href = "https://discord.gg/NsRSaQNbYa"><img src="https://img.icons8.com/color/48/000000/discord.png"/></a>
+
+## Note:
+- Your account needs a Phone Number verification for using this
+- Do not use your main account
+- Accounts with 2fa don't get flagged quick
 
 
 ## Credits:
