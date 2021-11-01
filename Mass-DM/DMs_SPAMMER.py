@@ -26,6 +26,7 @@ cooldown = yamete_kudasai['min_cooldown']
 cooldown_max = yamete_kudasai['max_cooldown']
 display_sleep = yamete_kudasai['display_sleep']
 message = yamete_kudasai ['message']
+always_sleep = yamete_kudasai['sleep_on_exception']
 duplicate = yamete_kudasai['dm_already_dmed_users']
 fetch_users = yamete_kudasai['always_fetch_users']
 send_embed = yamete_kudasai['send_embed']
@@ -105,11 +106,10 @@ async def mass_dm():
                         print(
                             f"{Fore.BLUE}{current_time} {Fore.RED}[-] Couldn\'t send a DM to {Fore.YELLOW}{chupapi}{Fore.RED} - {e} {indx} / {len(data)}")
                         pablo = random.randint(cooldown, cooldown_max)
-                        if display_sleep == "True":
-                            print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
-                        else:
-                            pass
-                        await asyncio.sleep(pablo)
+                        if always_sleep == "True":
+                            if display_sleep == "True":
+                                print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
+                            await asyncio.sleep(pablo)
                 if chupapi.id not in penis:
                     await asyncio.sleep(0.01)
                     penis.append(chupapi.id)
@@ -138,11 +138,10 @@ async def mass_dm():
                 else:
                     print(f"{Fore.BLUE}{current_time} {Fore.RED}[-] Couldn\'t send a DM to {Fore.YELLOW}{chupapi}{Fore.RED} - {e} {indx} / {len(data)}")
                     pablo = random.randint(cooldown, cooldown_max)
-                    if display_sleep == "True":
-                        print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
-                    else:
-                        pass
-                    await asyncio.sleep(pablo)
+                    if always_sleep == "True":
+                        if display_sleep == "True":
+                            print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
+                        await asyncio.sleep(pablo)
             if chupapi.id not in penis:
                 await asyncio.sleep(0.01)
                 penis.append(chupapi.id)
@@ -253,11 +252,10 @@ async def mass_dm_embed():
                         print(
                             f"{Fore.BLUE}{current_time} {Fore.RED}[-] Couldn\'t send a DM to {Fore.YELLOW}{chupapi}{Fore.RED} - {e} {indx} / {len(data)}")
                         pablo = random.randint(cooldown, cooldown_max)
-                        if display_sleep == "True":
-                            print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
-                        else:
-                            pass
-                        await asyncio.sleep(pablo)
+                        if always_sleep == "True":
+                            if display_sleep == "True":
+                                print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
+                            await asyncio.sleep(pablo)
                 if chupapi.id not in penis:
                     await asyncio.sleep(0.01)
                     penis.append(chupapi.id)
@@ -293,10 +291,10 @@ async def mass_dm_embed():
                 else:
                     print(f"{Fore.BLUE}{current_time} {Fore.RED}[-] Couldn\'t send a DM to {Fore.YELLOW}{chupapi}{Fore.RED} - {e} {indx} / {len(data)}")
                     pablo = random.randint(cooldown, cooldown_max)
-                    if display_sleep == "True":
-                        print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
-                    else:
-                        pass
+                    if always_sleep == "True":
+                        if display_sleep == "True":
+                            print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
+                        await asyncio.sleep(pablo)
                     await asyncio.sleep(pablo)
             if chupapi.id not in penis:
                 await asyncio.sleep(0.01)
