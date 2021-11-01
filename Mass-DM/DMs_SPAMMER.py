@@ -153,6 +153,8 @@ async def mass_dm():
 
     input(f"{Fore.LIGHTGREEN_EX}Press Enter 5 times to close the program.")
     [input(i) for i in range(4, 0, -1)]
+    print("Goodbye!\nhttps://github.com/hoemotion/mass-dm-discord Don\'t forget to leave a star!!")
+    await sys.exit()
 
 async def mass_dm_embed():
     with open("ids.json", "r") as file:
@@ -306,6 +308,8 @@ async def mass_dm_embed():
 
     input(f"{Fore.LIGHTGREEN_EX}Press Enter 5 times to close the program.")
     [input(i) for i in range(4, 0, -1)]
+    print("Goodbye!\nhttps://github.com/hoemotion/mass-dm-discord Don\'t forget to leave a star!!")
+    await sys.exit()
 
 print(pyfade.Fade.Horizontal(pyfade.Colors.blue_to_cyan, '''
 ███╗   ███╗ █████╗  ██████╗ ██████╗        ██████╗ ███╗   ███╗
