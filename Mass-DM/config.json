@@ -7,7 +7,6 @@
 "whitelisted_servers_only": "False",
 "message": "Hello user_mention (you can use user_id, user_name, user_discriminator, selfbot_mention, selfbot_id, selfbot_discriminator too)",
 "send_embed": "False",
-"send_embed":  "True",
 "embed_title": "Yo yo user_name#user_discriminator",
 "embed_description": "Wassup user_mention\n[Github](https://github.com/hoemotion)",
 "embed_author": "selfbot_name#selfbot_discriminator",
