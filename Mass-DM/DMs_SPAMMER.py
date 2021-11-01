@@ -25,7 +25,7 @@ token = yamete_kudasai['token']
 cooldown = yamete_kudasai['min_cooldown']
 cooldown_max = yamete_kudasai['max_cooldown']
 display_sleep = yamete_kudasai['display_sleep']
-message = yamete_kudasai['message']
+message = yamete_kudasai ['message']
 duplicate = yamete_kudasai['dm_already_dmed_users']
 fetch_users = yamete_kudasai['always_fetch_users']
 send_embed = yamete_kudasai['send_embed']
@@ -85,7 +85,7 @@ async def mass_dm():
             else:
                 chupapi = await bot.fetch_user(i)
                 try:
-                    await chupapi.send(message)
+                    await chupapi.send(message.replace('user_id', f'{chupapi.id}').replace('user_name', f'{chupapi.name}').replace('user_mention', f'<@{chupapi.id}>').replace('user_discriminator', f'{chupapi.discriminator}').replace('selfbot_id',f'{bot.user.id}').replace('selfbot_name', f'{bot.user.name}').replace('selfbot_mention', f'<@{bot.user.id}>').replace('selfbot_discriminator', f'{bot.user.discriminator}'))
                     print(
                         f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[+] Sent {message} to {Fore.YELLOW}{chupapi}{Fore.LIGHTGREEN_EX} {indx} / {len(data)}")
                     pablo = random.randint(cooldown, cooldown_max)
@@ -97,8 +97,8 @@ async def mass_dm():
                 except discord.Forbidden as e:
                     if e.code == 40003:
                         print(
-                            f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 750 seconds - {Fore.RED}{e}")
-                        await asyncio.sleep(750)
+                            f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 45 seconds - {Fore.RED}{e}")
+                        await asyncio.sleep(45)
                         os.execv(sys.executable, ['python'] + sys.argv)
                         continue
                     else:
@@ -120,7 +120,7 @@ async def mass_dm():
         else:
             try:
                 chupapi = await bot.fetch_user(i)
-                await chupapi.send(message)
+                await chupapi.send(message.replace('user_id', f'{chupapi.id}').replace('user_name', f'{chupapi.name}').replace('user_mention', f'<@{chupapi.id}>').replace('user_discriminator', f'{chupapi.discriminator}').replace('selfbot_id',f'{bot.user.id}').replace('selfbot_name', f'{bot.user.name}').replace('selfbot_mention', f'<@{bot.user.id}>').replace('selfbot_discriminator', f'{bot.user.discriminator}'))
                 print(f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[+] Sent {message} to {Fore.YELLOW}{chupapi}{Fore.LIGHTGREEN_EX} {indx} / {len(data)}")
                 pablo = random.randint(cooldown, cooldown_max)
                 if display_sleep == "True":
@@ -190,17 +190,47 @@ async def mass_dm_embed():
                     print(f"{Fore.RED}[FETCH USERS ERROR]")
                     error_msg()
             else:
-                embed = discord.Embed(
-                    title=f"{embed_title}",
-                    description=f"{embed_description}",
-                    color=discord.Colour.random())
-                embed.set_thumbnail(url=f"{embed_thumbnail_url}"),
-                embed.set_image(url=f"{embed_image_url}"),
-                embed.set_author(name=f"{embed_author}", icon_url=embed_author_icon_url)
-                embed.set_footer(text=f"{embed_footer}", icon_url=embed_footer_icon_url)
                 chupapi = await bot.fetch_user(i)
+                embed_skrr = discord.Embed(
+                    title=f"{embed_title}".replace('user_id', f'{chupapi.id}').replace('user_name',
+                                                                                       f'{chupapi.name}').replace(
+                        'user_discriminator', f'{chupapi.discriminator}').replace('selfbot_id',
+                                                                                  f'{bot.user.id}').replace(
+                        'selfbot_name', f'{bot.user.name}').replace('selfbot_mention', f'<@{bot.user.id}>').replace(
+                        'selfbot_discriminator', f'{bot.user.discriminator}'),
+                    icon_url=embed_footer_icon_url.replace('user_avatar', f'{chupapi.avatar_url}').replace(
+                        'selfbot_avatar', f'{bot.user.avatar_url}'),
+                    description=f"{embed_description}".replace('user_id', f'{chupapi.id}').replace('user_name',
+                                                                                                   f'{chupapi.name}').replace(
+                        'user_mention', f'<@{chupapi.id}>').replace('user_discriminator',
+                                                                    f'{chupapi.discriminator}').replace('selfbot_id',
+                                                                                                        f'{bot.user.id}').replace(
+                        'selfbot_name', f'{bot.user.name}').replace('selfbot_mention', f'<@{bot.user.id}>').replace(
+                        'selfbot_discriminator', f'{bot.user.discriminator}'), color=discord.Colour.random())
+                embed_skrr.set_thumbnail(url=f"{embed_thumbnail_url}"),
+                embed_skrr.set_image(url=f"{embed_image_url}"),
+                embed_skrr.set_author(name=f"{embed_author}".replace('user_id', f'{chupapi.id}').replace('user_name',
+                                                                                                         f'{chupapi.name}').replace(
+                    'user_mention', f'<@{chupapi.id}>').replace('user_discriminator',
+                                                                f'{chupapi.discriminator}').replace('selfbot_id',
+                                                                                                    f'{bot.user.id}').replace(
+                    'selfbot_name', f'{bot.user.name}').replace('selfbot_mention', f'<@{bot.user.id}>').replace(
+                    'selfbot_discriminator', f'{bot.user.discriminator}'),
+                                      icon_url=embed_author_icon_url.replace('user_avatar',
+                                                                             f'{chupapi.avatar_url}').replace(
+                                          'selfbot_avatar', f'{bot.user.avatar_url}'))
+                embed_skrr.set_footer(text=f"{embed_footer}".replace('user_id', f'{chupapi.id}').replace('user_name',
+                                                                                                         f'{chupapi.name}').replace(
+                    'user_mention', f'<@{chupapi.id}>').replace('user_discriminator',
+                                                                f'{chupapi.discriminator}').replace('selfbot_id',
+                                                                                                    f'{bot.user.id}').replace(
+                    'selfbot_name', f'{bot.user.name}').replace('selfbot_mention', f'<@{bot.user.id}>').replace(
+                    'selfbot_discriminator', f'{bot.user.discriminator}'),
+                                      icon_url=embed_footer_icon_url.replace('user_avatar',
+                                                                             f'{chupapi.avatar_url}').replace(
+                                          'selfbot_avatar', f'{bot.user.avatar_url}'))
                 try:
-                    await chupapi.send(embed=embed)
+                    await chupapi.send(embed=embed_skrr)
                     print(
                         f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[+] Sent the embed to {Fore.YELLOW}{chupapi}{Fore.LIGHTGREEN_EX} {indx} / {len(data)}")
                     pablo = random.randint(cooldown, cooldown_max)
@@ -235,7 +265,15 @@ async def mass_dm_embed():
         else:
             try:
                 chupapi = await bot.fetch_user(i)
-                await chupapi.send(embed)
+                embed_skrr = discord.Embed(
+                    title=f"{embed_title}".replace('user_id', f'{chupapi.id}').replace('user_name',f'{chupapi.name}').replace('user_discriminator', f'{chupapi.discriminator}').replace('selfbot_id',f'{bot.user.id}').replace('selfbot_name', f'{bot.user.name}').replace('selfbot_mention', f'<@{bot.user.id}>').replace('selfbot_discriminator', f'{bot.user.discriminator}'),icon_url=embed_footer_icon_url.replace('user_avatar',f'{chupapi.avatar_url}').replace('selfbot_avatar', f'{bot.user.avatar_url}'),
+                    description=f"{embed_description}".replace('user_id', f'{chupapi.id}').replace('user_name',f'{chupapi.name}').replace('user_mention', f'<@{chupapi.id}>').replace('user_discriminator', f'{chupapi.discriminator}').replace('selfbot_id',f'{bot.user.id}').replace('selfbot_name', f'{bot.user.name}').replace('selfbot_mention', f'<@{bot.user.id}>').replace('selfbot_discriminator', f'{bot.user.discriminator}'), color=discord.Colour.random())
+                embed_skrr.set_thumbnail(url=f"{embed_thumbnail_url}"),
+                embed_skrr.set_image(url=f"{embed_image_url}"),
+                embed_skrr.set_author(name=f"{embed_author}".replace('user_id', f'{chupapi.id}').replace('user_name',f'{chupapi.name}').replace('user_mention', f'<@{chupapi.id}>').replace('user_discriminator',f'{chupapi.discriminator}').replace('selfbot_id',f'{bot.user.id}').replace('selfbot_name', f'{bot.user.name}').replace('selfbot_mention', f'<@{bot.user.id}>').replace('selfbot_discriminator', f'{bot.user.discriminator}'),
+                                      icon_url=embed_author_icon_url.replace('user_avatar',f'{chupapi.avatar_url}').replace('selfbot_avatar', f'{bot.user.avatar_url}'))
+                embed_skrr.set_footer(text=f"{embed_footer}".replace('user_id', f'{chupapi.id}').replace('user_name',f'{chupapi.name}').replace('user_mention', f'<@{chupapi.id}>').replace('user_discriminator',f'{chupapi.discriminator}').replace('selfbot_id',f'{bot.user.id}').replace('selfbot_name', f'{bot.user.name}').replace('selfbot_mention', f'<@{bot.user.id}>').replace('selfbot_discriminator', f'{bot.user.discriminator}'),icon_url=embed_footer_icon_url.replace('user_avatar',f'{chupapi.avatar_url}').replace('selfbot_avatar', f'{bot.user.avatar_url}'))
+                await chupapi.send(embed=embed_skrr)
                 print(f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[+] Sent the embed to {Fore.YELLOW}{chupapi}{Fore.LIGHTGREEN_EX} {indx} / {len(data)}")
                 pablo = random.randint(cooldown, cooldown_max)
                 if display_sleep == "True":
