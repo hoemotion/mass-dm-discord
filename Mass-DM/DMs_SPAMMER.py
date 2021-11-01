@@ -110,6 +110,8 @@ async def mass_dm():
                             if display_sleep == "True":
                                 print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
                             await asyncio.sleep(pablo)
+                except discord.HTTPException:
+                    print(f"{Fore.BLUE}{current_time} {Fore.RED}[-] Couldn\'t fetch {Fore.YELLOW}{i}{Fore.RED} - {e} {indx} / {len(data)}")
                 if chupapi.id not in penis:
                     await asyncio.sleep(0.01)
                     penis.append(chupapi.id)
@@ -142,6 +144,8 @@ async def mass_dm():
                         if display_sleep == "True":
                             print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
                         await asyncio.sleep(pablo)
+            except discord.HTTPException:
+                print(f"{Fore.BLUE}{current_time} {Fore.RED}[-] Couldn\'t fetch {Fore.YELLOW}{i}{Fore.RED} - {e} {indx} / {len(data)}")
             if chupapi.id not in penis:
                 await asyncio.sleep(0.01)
                 penis.append(chupapi.id)
@@ -256,6 +260,8 @@ async def mass_dm_embed():
                             if display_sleep == "True":
                                 print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
                             await asyncio.sleep(pablo)
+                except discord.HTTPException:
+                    print(f"{Fore.BLUE}{current_time} {Fore.RED}[-] Couldn\'t fetch {Fore.YELLOW}{i}{Fore.RED} - {e} {indx} / {len(data)}")
                 if chupapi.id not in penis:
                     await asyncio.sleep(0.01)
                     penis.append(chupapi.id)
@@ -296,6 +302,8 @@ async def mass_dm_embed():
                             print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
                         await asyncio.sleep(pablo)
                     await asyncio.sleep(pablo)
+            except discord.HTTPException:
+                print(f"{Fore.BLUE}{current_time} {Fore.RED}[-] Couldn\'t fetch {Fore.YELLOW}{i}{Fore.RED} - {e} {indx} / {len(data)}")
             if chupapi.id not in penis:
                 await asyncio.sleep(0.01)
                 penis.append(chupapi.id)
