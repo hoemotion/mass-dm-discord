@@ -97,8 +97,8 @@ async def mass_dm():
                 except discord.Forbidden as e:
                     if e.code == 40003:
                         print(
-                            f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 45 seconds - {Fore.RED}{e}")
-                        await asyncio.sleep(45)
+                            f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 750 seconds - {Fore.RED}{e}")
+                        await asyncio.sleep(750)
                         os.execv(sys.executable, ['python'] + sys.argv)
                         continue
                     else:
@@ -130,8 +130,9 @@ async def mass_dm():
                 await asyncio.sleep(pablo)
             except discord.Forbidden as e:
                 if e.code == 40003:
-                    print(f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 45 seconds - {Fore.RED}{e}")
-                    await asyncio.sleep(45)
+                    print(
+                        f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 750 seconds - {Fore.RED}{e}")
+                    await asyncio.sleep(750)
                     os.execv(sys.executable, ['python'] + sys.argv)
                     continue
                 else:
@@ -242,8 +243,8 @@ async def mass_dm_embed():
                 except discord.Forbidden as e:
                     if e.code == 40003:
                         print(
-                            f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 45 seconds - {Fore.RED}{e}")
-                        await asyncio.sleep(45)
+                            f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 750 seconds - {Fore.RED}{e}")
+                        await asyncio.sleep(750)
                         os.execv(sys.executable, ['python'] + sys.argv)
                         continue
                     else:
@@ -283,8 +284,8 @@ async def mass_dm_embed():
                 await asyncio.sleep(pablo)
             except discord.Forbidden as e:
                 if e.code == 40003:
-                    print(f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 45 seconds - {Fore.RED}{e}")
-                    await asyncio.sleep(45)
+                    print(f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 750 seconds - {Fore.RED}{e}")
+                    await asyncio.sleep(750)
                     os.execv(sys.executable, ['python'] + sys.argv)
                     continue
                 else:
