@@ -492,6 +492,6 @@ async def on_reaction_add(reaction, member):
         pass
 try:
     bot.run(token, bot=False)
-except:
-    print(f"{Fore.RED}TOKEN ERROR")
+except Exception as e:
+    print(f"{Fore.RED}TOKEN ERROR - {e}")
     error_msg()
