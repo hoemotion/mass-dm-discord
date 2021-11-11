@@ -19,15 +19,8 @@ https://dsc.gg/hoemotion"""))
 sys.tracebacklimit = 0
 with open('config.json') as f:
     yamete_kudasai = json.load(f)
-token = yamete_kudasai['token']
-whitelist = yamete_kudasai['whitelisted_servers_only']
-if whitelist == "True":
-    pass
-elif whitelist == "False":
-    pass
-else:
-    print(f"{Fore.RED}WHITELIST ERROR")
-    error_msg()
+token = yamete_kudasai['logger-token']
+whitelist = "False"
 print(pyfade.Fade.Horizontal(pyfade.Colors.cyan_to_blue, '''
 ██╗██████╗         ██╗      █████╗  ██████╗  ██████╗ ███████╗██████╗ 
 ██║██╔══██╗        ██║     ██╔══██╗██╔════╝ ██╔════╝ ██╔════╝██╔══██╗
@@ -36,11 +29,11 @@ print(pyfade.Fade.Horizontal(pyfade.Colors.cyan_to_blue, '''
 ██║██████╔╝        ███████╗╚█████╔╝╚██████╔╝╚██████╔╝███████╗██║  ██║
 ╚═╝╚═════╝         ╚══════╝ ╚════╝  ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝'''))
 print(f'''{Fore.LIGHTWHITE_EX}                                                    Made by {Fore.YELLOW}hoemotion 
-{Fore.LIGHTWHITE_EX}Check out the github page for updates: {Fore.LIGHTBLUE_EX}https://github.com/hoemotion/mass-dm-discord/  
+{Fore.LIGHTWHITE_EX}Check out the github page for updates: {Fore.LIGHTBLUE_EX}https://github.com/hoemotion/mass-dm-requests/  
 ''')
 
 
-def log_id(id, name, discriminator, guild):
+def log_id(reason, id, name, discriminator, guild):
     now = datetime.now()
     current_time = now.strftime("%H:%M")
     try:
@@ -64,9 +57,9 @@ def log_id(id, name, discriminator, guild):
                 json.dump(data, file)
 
             try:
-                print(f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[{Fore.YELLOW}{guild}{Fore.LIGHTGREEN_EX}] {Fore.YELLOW}{name}#{discriminator} {Fore.LIGHTGREEN_EX}- {Fore.YELLOW}{id}{Fore.LIGHTGREEN_EX} Total:{Fore.YELLOW} {len(data)}")
+                print(f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[{Fore.YELLOW}{guild}{Fore.LIGHTGREEN_EX} | {Fore.YELLOW}{reason}{Fore.LIGHTGREEN_EX}] {Fore.YELLOW}{name}#{discriminator} {Fore.LIGHTGREEN_EX}- {Fore.YELLOW}{id}{Fore.LIGHTGREEN_EX} Total:{Fore.YELLOW} {len(data)}")
             except AttributeError:
-                print(f"{Fore.BLUE}{current_time} {Fore.YELLOW} {name}#{discriminator} {Fore.LIGHTGREEN_EX}- {Fore.YELLOW}{id} {Fore.LIGHTGREEN_EX}Total: {Fore.YELLOW}{len(data)}")
+                print(f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[{Fore.YELLOW}{reason}{Fore.LIGHTGREEN_EX}]{Fore.YELLOW} {name}#{discriminator} {Fore.LIGHTGREEN_EX}- {Fore.YELLOW}{id} {Fore.LIGHTGREEN_EX}Total: {Fore.YELLOW}{len(data)}")
             except:
                 pass
 
@@ -81,6 +74,8 @@ async def on_ready():
     await bot.change_presence(status=discord.Status.idle)
     print(f'{Fore.LIGHTGREEN_EX}Logged in as: {Fore.YELLOW}"{bot.user}" {Fore.LIGHTGREEN_EX}| ID: {Fore.YELLOW}"{bot.user.id}"{Fore.LIGHTGREEN_EX}\nConnected with {Fore.YELLOW}{len(bot.guilds)}{Fore.LIGHTGREEN_EX} Guilds and {Fore.YELLOW}{len(bot.user.friends)} {Fore.LIGHTGREEN_EX}Friends')
     print(f'{Fore.LIGHTYELLOW_EX}[⚡] Started logging IDs\n')
+    if len(bot.guilds) < 20:
+        print("Logging IDs will become faster if you join more Servers!")
 
 @bot.event
 async def on_message(message):
@@ -99,8 +94,9 @@ async def on_message(message):
                 try:
                     if not message.author.bot:
                         try:
+                            reason = "MESSAGE"
                             log_id(message.author.id, message.author.name, message.author.discriminator,
-                                   message.author.guild.name)
+                                   message.author.guild, reason)
                         except AttributeError:
                             pass
 
@@ -124,8 +120,9 @@ async def on_message(message):
             try:
                 if not message.author.bot:
                     try:
-                        log_id(message.author.id, message.author.name, message.author.discriminator,
-                               message.author.guild.name)
+                        reason = "MESSAGE"
+                        log_id(reason, message.author.id, message.author.name, message.author.discriminator,
+                               message.author.guild)
                     except AttributeError:
                         pass
 
@@ -139,12 +136,12 @@ async def on_message(message):
 @bot.event
 async def on_delete(message):
     if whitelist == "True":
-        with open('whitelistedservers.json') as f:
+        with open('whitelistedservers.json', "r") as f:
             whitlisted_servers = json.load(f)
         if message.guild.id in whitlisted_servers:
             await asyncio.sleep(0.1)
             try:
-                with open('blacklistedservers.json') as f:
+                with open('blacklistedservers.json', "r") as f:
                     banned_servers = json.load(f)
                 if message.guild.id in banned_servers:
                     return
@@ -152,8 +149,9 @@ async def on_delete(message):
                     pass
                     try:
                         if not message.author.bot:
-                            log_id(message.author.id, message.author.name, message.author.discriminator,
-                                   message.author.guild.name)
+                            reason = "MESSAGE DELETED"
+                            log_id(reason, message.author.id, message.author.name, message.author.discriminator,
+                                   message.author.guild)
                         if message.author.bot:
                             pass
                     except AttributeError:
@@ -161,11 +159,11 @@ async def on_delete(message):
             except:
                 pass
         else:
-            return
+            pass
     else:
         await asyncio.sleep(0.1)
         try:
-            with open('blacklistedservers.json') as f:
+            with open('blacklistedservers.json', "r") as f:
                 banned_servers = json.load(f)
             if message.guild.id in banned_servers:
                 return
@@ -173,8 +171,9 @@ async def on_delete(message):
                 pass
                 try:
                     if not message.author.bot:
-                        log_id(message.author.id, message.author.name, message.author.discriminator,
-                               message.author.guild.name)
+                        reason = "MESSAGE DELETED"
+                        log_id(reason, message.author.id, message.author.name, message.author.discriminator,
+                               message.author.guild)
                     if message.author.bot:
                         pass
                 except AttributeError:
@@ -185,12 +184,12 @@ async def on_delete(message):
 @bot.event
 async def on_raw_reaction_add(payload):
     if whitelist == "True":
-        with open('whitelistedservers.json') as f:
+        with open('whitelistedservers.json', "r") as f:
             whitlisted_servers = json.load(f)
         if payload.member.guild.id in whitlisted_servers:
             await asyncio.sleep(0.1)
             try:
-                with open('blacklistedservers.json') as f:
+                with open('blacklistedservers.json', "r") as f:
                     banned_servers = json.load(f)
                 if payload.member.guild.id in banned_servers:
                     return
@@ -198,8 +197,9 @@ async def on_raw_reaction_add(payload):
                     pass
                 try:
                     if not payload.member.bot:
-                        log_id(payload.member.id, payload.member.name, payload.member.discriminator,
-                               payload.member.guild.name)
+                        reason = "EMOJI REACTION (RAW)"
+                        log_id(reason, payload.member.id, payload.member.name, payload.member.discriminator,
+                               payload.member.guild)
                 except:
                     pass
             except:
@@ -209,7 +209,7 @@ async def on_raw_reaction_add(payload):
     else:
         await asyncio.sleep(0.1)
         try:
-            with open('blacklistedservers.json') as f:
+            with open('blacklistedservers.json', "r") as f:
                 banned_servers = json.load(f)
             if payload.member.guild.id in banned_servers:
                 return
@@ -217,8 +217,9 @@ async def on_raw_reaction_add(payload):
                 pass
             try:
                 if not payload.member.bot:
-                    log_id(payload.member.id, payload.member.name, payload.member.discriminator,
-                           payload.member.guild.name)
+                    reason = "EMOJI REACTION (RAW)"
+                    log_id(reason, payload.member.id, payload.member.name, payload.member.discriminator,
+                           payload.member.guild)
             except:
                 pass
         except:
@@ -228,12 +229,12 @@ async def on_raw_reaction_add(payload):
 @bot.event
 async def on_edit(message):
     if whitelist == "True":
-        with open('whitelistedservers.json') as f:
+        with open('whitelistedservers.json', "r") as f:
             whitlisted_servers = json.load(f)
         if message.guild.id in whitlisted_servers:
             await asyncio.sleep(0.1)
             try:
-                with open('blacklistedservers.json') as f:
+                with open('blacklistedservers.json', "r") as f:
                     banned_servers = json.load(f)
                 if message.guild.id in banned_servers:
                     return
@@ -241,8 +242,9 @@ async def on_edit(message):
                     pass
                     try:
                         if not message.author.bot:
-                            log_id(message.author.id, message.author.name, message.author.discriminator,
-                                   message.author.guild.name)
+                            reason = "MESSAGE EDIT"
+                            log_id(reason, message.author.id, message.author.name, message.author.discriminator,
+                                   message.author.guild)
                         if message.author.bot:
                             pass
                     except AttributeError:
@@ -254,7 +256,7 @@ async def on_edit(message):
     else:
         await asyncio.sleep(0.1)
         try:
-            with open('blacklistedservers.json') as f:
+            with open('blacklistedservers.json', "r") as f:
                 banned_servers = json.load(f)
             if message.guild.id in banned_servers:
                 return
@@ -262,8 +264,9 @@ async def on_edit(message):
                 pass
                 try:
                     if not message.author.bot:
-                        log_id(message.author.id, message.author.name, message.author.discriminator,
-                               message.author.guild.name)
+                        reason = "MESSAGE EDIT"
+                        log_id(reason, message.author.id, message.author.name, message.author.discriminator,
+                               message.author.guild)
                     if message.author.bot:
                         pass
                 except AttributeError:
@@ -274,12 +277,12 @@ async def on_edit(message):
 @bot.event
 async def on_member_join(member):
     if whitelist == "True":
-        with open('whitelistedservers.json') as f:
+        with open('whitelistedservers.json', "r") as f:
             whitlisted_servers = json.load(f)
         if member.guild.id in whitlisted_servers:
             await asyncio.sleep(0.1)
             try:
-                with open('blacklistedservers.json') as f:
+                with open('blacklistedservers.json', "r") as f:
                     banned_servers = json.load(f)
                 if member.guild.id in banned_servers:
                     return
@@ -287,7 +290,8 @@ async def on_member_join(member):
                     pass
                     try:
                         if not member.bot:
-                            log_id(member.id, member.name, member.discriminator, member.guild.name)
+                            reason = "GUILD JOIN"
+                            log_id(reason, member.id, member.name, member.discriminator, member.guild)
                         if member.bot:
                             pass
                     except AttributeError:
@@ -299,7 +303,7 @@ async def on_member_join(member):
     else:
         await asyncio.sleep(0.1)
         try:
-            with open('blacklistedservers.json') as f:
+            with open('blacklistedservers.json', "r") as f:
                 banned_servers = json.load(f)
             if member.guild.id in banned_servers:
                 return
@@ -307,7 +311,8 @@ async def on_member_join(member):
                 pass
                 try:
                     if not member.bot:
-                        log_id(member.id, member.name, member.discriminator, member.guild.name)
+                        reason = "GUILD JOIN"
+                        log_id(reason, member.id, member.name, member.discriminator, member.guild)
                     if member.bot:
                         pass
                 except AttributeError:
@@ -318,12 +323,12 @@ async def on_member_join(member):
 @bot.event
 async def on_member_remove(user):
     if whitelist == "True":
-        with open('whitelistedservers.json') as f:
+        with open('whitelistedservers.json', "r") as f:
             whitlisted_servers = json.load(f)
         if user.guild.id in whitlisted_servers:
             await asyncio.sleep(0.1)
             try:
-                with open('blacklistedservers.json') as f:
+                with open('blacklistedservers.json', "r") as f:
                     banned_servers = json.load(f)
                 if user.guild.id in banned_servers:
                     return
@@ -331,7 +336,8 @@ async def on_member_remove(user):
                     pass
                     try:
                         if not user.bot:
-                            log_id(user.id, user.name, user.discriminator, user.guild.name)
+                            reason = "GUILD LEAVE"
+                            log_id(reason, user.id, user.name, user.discriminator, user.guild)
                         if user.bot:
                             pass
                     except AttributeError:
@@ -343,7 +349,7 @@ async def on_member_remove(user):
     else:
         await asyncio.sleep(0.1)
         try:
-            with open('blacklistedservers.json') as f:
+            with open('blacklistedservers.json', "r") as f:
                 banned_servers = json.load(f)
             if user.guild.id in banned_servers:
                 return
@@ -351,7 +357,8 @@ async def on_member_remove(user):
                 pass
                 try:
                     if not user.bot:
-                        log_id(user.id, user.name, user.discriminator, user.guild.name)
+                        reason = "GUILD LEAVE"
+                        log_id(reason, user.id, user.name, user.discriminator, user.guild)
                     if user.bot:
                         pass
                 except AttributeError:
@@ -362,12 +369,12 @@ async def on_member_remove(user):
 @bot.event
 async def on_member_update(before, after):
     if whitelist == "True":
-        with open('whitelistedservers.json') as f:
+        with open('whitelistedservers.json', "r") as f:
             whitlisted_servers = json.load(f)
         if before.member.guild.id in whitlisted_servers:
             await asyncio.sleep(0.1)
             try:
-                with open('blacklistedservers.json') as f:
+                with open('blacklistedservers.json', "r") as f:
                     banned_servers = json.load(f)
                 if after.member.guild.id in banned_servers:
                     return
@@ -375,8 +382,9 @@ async def on_member_update(before, after):
                     pass
                     try:
                         if not after.member.bot:
-                            log_id(after.member.id, after.member.name, after.member.discriminator,
-                                   after.member.guild.name)
+                            reason = "MEMBER UPDATE"
+                            log_id(reason, after.member.id, after.member.name, after.member.discriminator,
+                                   after.member.guild)
                         if after.member.bot:
                             pass
                     except AttributeError:
@@ -388,7 +396,7 @@ async def on_member_update(before, after):
     else:
         await asyncio.sleep(0.1)
         try:
-            with open('blacklistedservers.json') as f:
+            with open('blacklistedservers.json', "r") as f:
                 banned_servers = json.load(f)
             if after.member.guild.id in banned_servers:
                 return
@@ -396,7 +404,8 @@ async def on_member_update(before, after):
                 pass
                 try:
                     if not after.member.bot:
-                        log_id(after.member.id, after.member.name, after.member.discriminator, after.member.guild.name)
+                        reason = "MEMBER UPDATE"
+                        log_id(reason, after.member.id, after.member.name, after.member.discriminator, after.member.guild)
                     if after.member.bot:
                         pass
                 except AttributeError:
@@ -407,12 +416,12 @@ async def on_member_update(before, after):
 @bot.event
 async def on_voice_state_update(member, before, after):
     if whitelist == "True":
-        with open('whitelistedservers.json') as f:
+        with open('whitelistedservers.json', "r") as f:
             whitlisted_servers = json.load(f)
         if before.member.guild.id in whitlisted_servers:
             await asyncio.sleep(0.1)
             try:
-                with open('blacklistedservers.json') as f:
+                with open('blacklistedservers.json', "r") as f:
                     banned_servers = json.load(f)
                 if after.member.guild.id in banned_servers:
                     return
@@ -420,8 +429,9 @@ async def on_voice_state_update(member, before, after):
                     pass
                     try:
                         if not member.bot:
-                            log_id(member.id, member.name, member.discriminator, member.guild.name)
-                        if user.bot:
+                            reason = "VOICE STATE UPDATE"
+                            log_id(reason, member.id, member.name, member.discriminator, member.guild)
+                        if member.bot:
                             pass
                     except AttributeError:
                         pass
@@ -432,7 +442,7 @@ async def on_voice_state_update(member, before, after):
     else:
         await asyncio.sleep(0.1)
         try:
-            with open('blacklistedservers.json') as f:
+            with open('blacklistedservers.json', "r") as f:
                 banned_servers = json.load(f)
             if after.member.guild.id in banned_servers:
                 return
@@ -440,8 +450,9 @@ async def on_voice_state_update(member, before, after):
                 pass
                 try:
                     if not member.bot:
-                        log_id(member.id, member.name, member.discriminator, member.guild.name)
-                    if user.bot:
+                        reason = "VOICE STATE UPDATE"
+                        log_id(reason, member.id, member.name, member.discriminator, member.guild)
+                    if member.bot:
                         pass
                 except AttributeError:
                     pass
@@ -451,12 +462,12 @@ async def on_voice_state_update(member, before, after):
 @bot.event
 async def on_reaction_add(reaction, member):
     if whitelist == "True":
-        with open('whitelistedservers.json') as f:
+        with open('whitelistedservers.json', "r") as f:
             whitlisted_servers = json.load(f)
         if member.guild.id in whitlisted_servers:
             await asyncio.sleep(0.1)
             try:
-                with open('blacklistedservers.json') as f:
+                with open('blacklistedservers.json', "r") as f:
                     banned_servers = json.load(f)
                 if member.guild.id in banned_servers:
                     return
@@ -464,7 +475,8 @@ async def on_reaction_add(reaction, member):
                     pass
                     try:
                         if not member.bot:
-                            log_id(member.id, member.name, member.discriminator, member.guild.name)
+                            reason = "EMOJI REACTION"
+                            log_id(reason, member.id, member.name, member.discriminator, member.guild)
                         if member.bot:
                             pass
                     except AttributeError:
@@ -475,7 +487,7 @@ async def on_reaction_add(reaction, member):
             return
     await asyncio.sleep(0.1)
     try:
-        with open('blacklistedservers.json') as f:
+        with open('blacklistedservers.json', "r") as f:
             banned_servers = json.load(f)
         if member.guild.id in banned_servers:
             return
@@ -483,7 +495,8 @@ async def on_reaction_add(reaction, member):
             pass
             try:
                 if not member.bot:
-                    log_id(member.id, member.name, member.discriminator, member.guild.name)
+                    reason = "EMOJI REACTION"
+                    log_id(reason, member.id, member.name, member.discriminator, member.guild)
                 if member.bot:
                     pass
             except AttributeError:
