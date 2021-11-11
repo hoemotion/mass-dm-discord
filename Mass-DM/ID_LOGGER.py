@@ -29,7 +29,7 @@ print(pyfade.Fade.Horizontal(pyfade.Colors.cyan_to_blue, '''
 ██║██████╔╝        ███████╗╚█████╔╝╚██████╔╝╚██████╔╝███████╗██║  ██║
 ╚═╝╚═════╝         ╚══════╝ ╚════╝  ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═╝'''))
 print(f'''{Fore.LIGHTWHITE_EX}                                                    Made by {Fore.YELLOW}hoemotion 
-{Fore.LIGHTWHITE_EX}Check out the github page for updates: {Fore.LIGHTBLUE_EX}https://github.com/hoemotion/mass-dm-requests/  
+{Fore.LIGHTWHITE_EX}Check out the github page for updates: {Fore.LIGHTBLUE_EX}https://github.com/hoemotion/mass-dm-discord/  
 ''')
 
 
