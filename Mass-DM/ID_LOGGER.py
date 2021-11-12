@@ -19,7 +19,7 @@ https://dsc.gg/hoemotion"""))
 sys.tracebacklimit = 0
 with open('config.json') as f:
     yamete_kudasai = json.load(f)
-token = yamete_kudasai['logger-token']
+token = yamete_kudasai['token']
 whitelist = "False"
 print(pyfade.Fade.Horizontal(pyfade.Colors.cyan_to_blue, '''
 ██╗██████╗         ██╗      █████╗  ██████╗  ██████╗ ███████╗██████╗ 
