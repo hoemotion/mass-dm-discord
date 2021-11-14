@@ -27,7 +27,7 @@
 ## Having Issues?
 - This is my Support-Server:
  
-<a href = "https://discord.gg/NsRSaQNbYa"><img src="https://img.icons8.com/color/48/000000/discord.png"/></a>
+<a href = "https://discord.gg/verQuxaBqy"><img src="https://img.icons8.com/color/48/000000/discord.png"/></a>
 
 ## Note:
 - Your account needs a Phone Number verification for using this
