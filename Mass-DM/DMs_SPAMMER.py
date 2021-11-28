@@ -10,7 +10,7 @@ from colorama import Fore
 from datetime import datetime
 from discord.ext import commands
 def error_msg():
-    print(pyfade.Fade.Horizontal(pyfade.Colors.purple_to_red, """Bruhhhh\nSeems like you\'re new to Python and/or JSON..\nJoin the Support-Server and lemme help you :)\nhttps://dsc.gg/hoemotion"""))
+    print(pyfade.Fade.Horizontal(pyfade.Colors.purple_to_red, """Bruhhhh\nSeems like you\'re new to Python and/or JSON..\nJoin the Support-Server and lemme help you :)\nhttps://discord.gg/verQuxaBqy"""))
     time.sleep(10)
     input(f"{Fore.YELLOW}Press Enter to exit the script")
     raise SystemExit
