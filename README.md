@@ -6,7 +6,7 @@
 - Little preview of the Logger and the Spammer and the Embed too
                 
 				
-![](https://img.shields.io/badge/release-v1.3-blue)
+![](https://img.shields.io/badge/release-v2.0-blue)
 
 
 ### Features
@@ -19,6 +19,7 @@
 - Blacklist User IDs (add the ID of the User you don't want to dm inside of the blacklistedids.json file) [OPTIONAL]
 - Blacklist Servers (You have to add the Server IDs to the blacklistedservers.json file) [OPTIONAL]
 - Whitelist Servers (You have to add the Server IDs to the whitelistedservers.json file) [OPTIONAL]
+- Multiple Tokens [OPTIONAL]
 
 ### Don't forget to leave a Star!
 
