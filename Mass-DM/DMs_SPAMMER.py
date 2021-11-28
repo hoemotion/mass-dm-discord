@@ -18,7 +18,29 @@ sys.tracebacklimit = 0
 bot = discord.Client()
 with open("tokens.json", "r") as file:
     tokens = json.load(file)
-token = random.choice(tokens)
+with open("alrdyusedtokens.json", "r") as file:
+    tokenscheck = json.load(file)
+unused_tokens = []
+if len(tokens) == 0:
+    print("No Tokens were found\nScript is closing")
+    raise SystemExit
+for tkn in tokens:
+    if tkn in tokenscheck:
+        pass
+    else:
+        unused_tokens.append(tkn)
+if len(unused_tokens) != 0:
+    token = random.choice(unused_tokens)
+    tokenscheck.append(token)
+    with open("./alrdyusedtokens.json", "w", encoding='utf-8') as file:
+        json.dump(tokenscheck, file)
+else:
+    reset = []
+    with open('./alrdyusedtokens.json', 'w', encoding='utf-8') as f:
+        json.dump(reset, f, ensure_ascii=False, indent=4)
+    print("Resetting already used tokens")
+    time.sleep(5)
+    os.execv(sys.executable, ['python'] + sys.argv)
 
 with open('config.json') as f:
     yamete_kudasai = json.load(f)
