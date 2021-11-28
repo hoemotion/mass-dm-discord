@@ -18,32 +18,27 @@ sys.tracebacklimit = 0
 bot = discord.Client()
 with open("tokens.json", "r") as file:
     tokens = json.load(file)
-with open("alrdyusedtokens.json", "r") as file:
-    tokenscheck = json.load(file)
+token = random.choice(tokens)
+
 with open('config.json') as f:
     yamete_kudasai = json.load(f)
-unused_tokens = []
-if len(tokens) == 0:
-    print("No Tokens were found\nScript is closing")
-    raise SystemExit
-for tkn in tokens:
-    if tkn in tokenscheck:
-        pass
-    else:
-        unused_tokens.append(tkn)
-if len(unused_tokens) != 0:
-    token = random.choice(unused_tokens)
-    with open('./alrdyusedtokens.json', 'r', encoding='utf-8') as f:
-        gigachad = json.load(file)
-        gigachad.append(token)
-        with open("./alrdyusedtokens.json", "w", encoding='utf-8') as file:
-            json.dump(gigachad, file)
-else:
-    reset = []
-    with open('./alrdyusedtokens.json', 'w', encoding='utf-8') as f:
-        json.dump(reset, f, ensure_ascii=False, indent=4)
-    os.execv(sys.executable, ['python'] + sys.argv)
-cooldown = yamete_kudasai['min_cooldown'], cooldown_max = yamete_kudasai['max_cooldown'], display_sleep = yamete_kudasai['display_sleep'], message = yamete_kudasai['message'], dm_limit = yamete_kudasai['dm_each_token'] ,always_sleep = yamete_kudasai['sleep_on_exception'] ,duplicate = yamete_kudasai['dm_already_dmed_users'] ,fetch_users = yamete_kudasai['always_fetch_users'] ,send_embed = yamete_kudasai['send_embed'] ,embed_title = yamete_kudasai['embed_title'] ,embed_description = yamete_kudasai['embed_description'] ,embed_author = yamete_kudasai['embed_author'] ,embed_footer = yamete_kudasai['embed_footer'] ,embed_footer_icon_url = yamete_kudasai['embed_footer_icon_url'] ,embed_thumbnail_url = yamete_kudasai['embed_thumbnail_url'] ,embed_image_url = yamete_kudasai['embed_image_url'], embed_author_icon_url = yamete_kudasai['embed_author_icon_url']
+cooldown = yamete_kudasai['min_cooldown']
+cooldown_max = yamete_kudasai['max_cooldown']
+display_sleep = yamete_kudasai['display_sleep']
+message = yamete_kudasai['message']
+dm_limit = yamete_kudasai['dm_each_token']
+always_sleep = yamete_kudasai['sleep_on_exception']
+duplicate = yamete_kudasai['dm_already_dmed_users']
+fetch_users = yamete_kudasai['always_fetch_users']
+send_embed = yamete_kudasai['send_embed']
+embed_title = yamete_kudasai['embed_title']
+embed_description = yamete_kudasai['embed_description']
+embed_author = yamete_kudasai['embed_author']
+embed_footer = yamete_kudasai['embed_footer']
+embed_footer_icon_url = yamete_kudasai['embed_footer_icon_url']
+embed_thumbnail_url = yamete_kudasai['embed_thumbnail_url']
+embed_image_url = yamete_kudasai['embed_image_url']
+embed_author_icon_url = yamete_kudasai['embed_author_icon_url']
 if duplicate == "True":
     munanyo = "True"
 elif duplicate == "False":
