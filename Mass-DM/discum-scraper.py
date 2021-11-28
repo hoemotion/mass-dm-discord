@@ -31,13 +31,13 @@ def get_members(guild_id, channel_id):
     bot.gateway.resetSession() #saves 10 seconds when gateway is run again
     return bot.gateway.session.guild(guild_id).members
 
-members = get_members('guildid', 'channelid')
+members = get_members('guild id here', 'channel id here')
 memberslist = []
 with open("ids.json", "r") as file:
   data = json.load(file)
 for memberID in members:
   if memberID not in data:
-    data.append(memberID)
+    data.append(int(memberID))
     print(memberID)
     with open("ids.json", "w") as file:
-                json.dump(data, file)
+        json.dump(data, file)
