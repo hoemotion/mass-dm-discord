@@ -43,4 +43,4 @@ for memberID in members:
     print(f"{total_scraped}/{len(members)} - {memberID}")
     with open("ids.json", "w") as file:
         json.dump(data, file)
-print(f"Scraped {total_craped} User IDs successfully")
+print(f"Scraped {total_scraped} User IDs successfully")
