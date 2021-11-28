@@ -1,3 +1,5 @@
+import time
+start = time.time()
 import sys
 import subprocess
 # python -m pip install --user --upgrade git+https://github.com/Merubokkusu/Discord-S.C.U.M#egg=discum
@@ -43,4 +45,5 @@ for memberID in members:
     print(f"{total_scraped}/{len(members)} - {memberID}")
     with open("ids.json", "w") as file:
         json.dump(data, file)
-print(f"Scraped {total_scraped} User IDs successfully")
+end = time.time()
+print(f"Scraped {total_scraped} User IDs successfully\nTime Taken: {end - start}s")
