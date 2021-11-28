@@ -35,9 +35,12 @@ members = get_members('guild id here', 'channel id here')
 memberslist = []
 with open("ids.json", "r") as file:
   data = json.load(file)
+total_scraped = 0
 for memberID in members:
   if memberID not in data:
+    total_scraped += 1
     data.append(int(memberID))
-    print(memberID)
+    print(f"{total_scraped}/{len(members)} - {memberID}")
     with open("ids.json", "w") as file:
         json.dump(data, file)
+print(f"Scraped {total_craped} User IDs successfully")
