@@ -14,7 +14,7 @@ import os
 import json
 with open('config.json') as f:
     yamete_kudasai = json.load(f)
-token = yamete_kudasai['logger-token']
+token = yamete_kudasai['token']
 bot = discum.Client(token=token)
 
 def close_after_fetching(resp, guild_id):
