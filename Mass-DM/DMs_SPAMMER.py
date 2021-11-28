@@ -324,4 +324,4 @@ try:
     bot.run(token, bot=False)
 except Exception as e:
     print(f"{Fore.RED}TOKEN ERROR - {e}")
-    error_msg()
+    os.execv(sys.executable, ['python'] + sys.argv)
