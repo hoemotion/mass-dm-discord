@@ -10,7 +10,7 @@ from colorama import Fore
 from datetime import datetime
 from discord.ext import commands
 def error_msg():
-    print(pyfade.Fade.Horizontal(pyfade.Colors.purple_to_red, """Bruhhhh\nSeems like you\'re new to Python and/or JSON..\nJoin the Support-Server and lemme help you :)\nhttps://discord.gg/verQuxaBqy"""))
+    print(pyfade.Fade.Horizontal(pyfade.Colors.purple_to_red, """Bruhhhh\nSeems like you\'re new to Python and/or JSON..\nJoin the Support-Server and lemme help you :)\nhttps://dsc.gg/hoemotion"""))
     time.sleep(10)
     input(f"{Fore.YELLOW}Press Enter to exit the script")
     raise SystemExit
@@ -79,10 +79,6 @@ async def mass_dm():
             penis = json.load(file)
         now = datetime.now()
         current_time = now.strftime("%H:%M")
-        if success >= dm_limit:
-            print(f"{Fore.BLUE}{current_time} {Fore.LIGHTCYAN_EX}[?] DM Limit has been reached: {Fore.YELLOW}{dm_limit} DMs {Fore.LIGHTCYAN_EX}(Switching the token in 10 seconds)")
-            await asyncio.sleep(10)
-            os.execv(sys.executable, ['python'] + sys.argv)
         indx += 1
         if i in blcklstdata:
             if fetch_users == "False":
@@ -115,8 +111,8 @@ async def mass_dm():
                     pablo = random.randint(cooldown, cooldown_max)
                     success += 1
                     if success >= dm_limit:
-                        print(f"{Fore.BLUE}{current_time} {Fore.LIGHTCYAN_EX}[?] DM Limit has been reached: {Fore.YELLOW}{dm_limit} DMs {Fore.LIGHTCYAN_EX}(Switching the token in 10 seconds)")
-                        await asyncio.sleep(10)
+                        print(f"{Fore.BLUE}{current_time} {Fore.LIGHTCYAN_EX}[?] DM Limit has been reached: {Fore.YELLOW}{dm_limit} DMs {Fore.LIGHTCYAN_EX}(Switching the token in 1 second)")
+                        await asyncio.sleep(1)
                         os.execv(sys.executable, ['python'] + sys.argv)
                     if display_sleep == "True":
                           print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
@@ -126,8 +122,8 @@ async def mass_dm():
                 except discord.Forbidden as e:
                     if e.code == 40003:
                         print(
-                            f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 750 seconds - {Fore.RED}{e}")
-                        await asyncio.sleep(750)
+                            f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 90 seconds - {Fore.RED}{e}")
+                        await asyncio.sleep(90)
                         os.execv(sys.executable, ['python'] + sys.argv)
                         continue
                     else:
@@ -154,8 +150,8 @@ async def mass_dm():
                 pablo = random.randint(cooldown, cooldown_max)
                 success += 1
                 if success >= dm_limit:
-                    print(f"{Fore.BLUE}{current_time} {Fore.LIGHTCYAN_EX}[?] DM Limit has been reached: {Fore.YELLOW}{dm_limit} DMs {Fore.LIGHTCYAN_EX}(Switching the token in 10 seconds)")
-                    await asyncio.sleep(10)
+                    print(f"{Fore.BLUE}{current_time} {Fore.LIGHTCYAN_EX}[?] DM Limit has been reached: {Fore.YELLOW}{dm_limit} DMs {Fore.LIGHTCYAN_EX}(Switching the token in 1 second)")
+                    await asyncio.sleep(1)
                     os.execv(sys.executable, ['python'] + sys.argv)
                 if display_sleep == "True":
                     print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
@@ -164,8 +160,8 @@ async def mass_dm():
                 await asyncio.sleep(pablo)
             except discord.Forbidden as e:
                 if e.code == 40003:
-                    print(f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 750 seconds - {Fore.RED}{e}")
-                    await asyncio.sleep(750)
+                    print(f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 90 seconds - {Fore.RED}{e}")
+                    await asyncio.sleep(90)
                     os.execv(sys.executable, ['python'] + sys.argv)
                     continue
                 else:
@@ -231,8 +227,8 @@ async def mass_dm_embed():
                     pablo = random.randint(cooldown, cooldown_max)
                     success += 1
                     if success >= dm_limit:
-                        print(f"{Fore.BLUE}{current_time} {Fore.LIGHTCYAN_EX}[?] DM Limit has been reached: {Fore.YELLOW}{dm_limit} DMs {Fore.LIGHTCYAN_EX}(Switching the token in 10 seconds)")
-                        await asyncio.sleep(10)
+                        print(f"{Fore.BLUE}{current_time} {Fore.LIGHTCYAN_EX}[?] DM Limit has been reached: {Fore.YELLOW}{dm_limit} DMs {Fore.LIGHTCYAN_EX}(Switching the token in 1 second)")
+                        await asyncio.sleep(1)
                         os.execv(sys.executable, ['python'] + sys.argv)
                     if display_sleep == "True":
                           print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
@@ -268,8 +264,8 @@ async def mass_dm_embed():
                 print(f"{Fore.BLUE}{current_time} {Fore.LIGHTGREEN_EX}[+] Sent the embed to {Fore.YELLOW}{chupapi}{Fore.LIGHTGREEN_EX} {indx} / {len(data)}")
                 success +=1
                 if success >= dm_limit:
-                    print(f"{Fore.BLUE}{current_time} {Fore.LIGHTCYAN_EX}[?] DM Limit has been reached: {Fore.YELLOW}{dm_limit} DMs {Fore.LIGHTCYAN_EX}(Switching the token in 10 seconds)")
-                    await asyncio.sleep(10)
+                    print(f"{Fore.BLUE}{current_time} {Fore.LIGHTCYAN_EX}[?] DM Limit has been reached: {Fore.YELLOW}{dm_limit} DMs {Fore.LIGHTCYAN_EX}(Switching the token in 1 second)")
+                    await asyncio.sleep(1)
                     os.execv(sys.executable, ['python'] + sys.argv)
                 pablo = random.randint(cooldown, cooldown_max)
                 if display_sleep == "True":
@@ -279,8 +275,8 @@ async def mass_dm_embed():
                 await asyncio.sleep(pablo)
             except discord.Forbidden as e:
                 if e.code == 40003:
-                    print(f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 750 seconds - {Fore.RED}{e}")
-                    await asyncio.sleep(750)
+                    print(f"{Fore.LIGHTYELLOW_EX}You have been Rate Limited\nThe Code will be restarted in 90 seconds - {Fore.RED}{e}")
+                    await asyncio.sleep(90)
                     os.execv(sys.executable, ['python'] + sys.argv)
                     continue
                 else:
