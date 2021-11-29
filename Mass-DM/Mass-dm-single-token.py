@@ -13,7 +13,7 @@ def error_msg():
     print(pyfade.Fade.Horizontal(pyfade.Colors.purple_to_red, """Bruhhhh
 Seems like you\'re new to Python and/or JSON..
 Join the Support-Server and lemme help you :)
-https://dsc.gg/hoemotion"""))
+https://discord.gg/verQuxaBqy"""))
     time.sleep(10)
     input(f"{Fore.YELLOW}Press Enter to exit the script")
     raise SystemExit
