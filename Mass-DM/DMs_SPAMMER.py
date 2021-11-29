@@ -80,7 +80,7 @@ async def mass_dm():
         now = datetime.now()
         current_time = now.strftime("%H:%M")
         indx += 1
-        if i in blcklstdata:
+        if int(i) in blcklstdata:
             if fetch_users == "False":
                 print(f"{Fore.BLUE}{current_time} {Fore.BLACK}[x] Blacklisted User {Fore.YELLOW}{i} {Fore.BLACK}{indx} / {len(data)}")
             elif fetch_users == "True":
@@ -92,7 +92,7 @@ async def mass_dm():
                 print(f"{Fore.RED}[FETCH USERS ERROR]")
                 error_msg()
         elif munanyo == "False":
-            if i in penis:
+            if int(i) in penis:
                 if fetch_users == "False":
                     print(f"{Fore.BLUE}{current_time} {Fore.LIGHTMAGENTA_EX}[x] Avoiding Duplicates: {Fore.YELLOW}{i} {Fore.BLACK}{indx} / {len(data)}")
                 elif fetch_users == "True":
@@ -194,7 +194,7 @@ async def mass_dm_embed():
         now = datetime.now()
         current_time = now.strftime("%H:%M")
         indx += 1
-        if i in blcklstdata:
+        if int(i) in blcklstdata:
             if fetch_users == "False":
                 print(f"{Fore.BLUE}{current_time} {Fore.BLACK}[x] Blacklisted User {Fore.YELLOW}{i} {Fore.BLACK}{indx} / {len(data)}")
             elif fetch_users == "True":
@@ -206,7 +206,7 @@ async def mass_dm_embed():
                 print(f"{Fore.RED}[FETCH USERS ERROR]")
                 error_msg()
         elif munanyo == "False":
-            if i in penis:
+            if int(i) in penis:
                 if fetch_users == "False":
                     print(f"{Fore.BLUE}{current_time} {Fore.LIGHTMAGENTA_EX}[x] Avoiding Duplicates: {Fore.YELLOW}{i} {Fore.BLACK}{indx} / {len(data)}")
                 elif fetch_users == "True":
