@@ -134,7 +134,7 @@ async def mass_dm():
                             if display_sleep == "True":
                                 print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
                             await asyncio.sleep(pablo)
-                except discord.HTTPException:
+                except discord.HTTPException as e:
                     print(f"{Fore.BLUE}{current_time} {Fore.RED}[-] Couldn\'t fetch {Fore.YELLOW}{i}{Fore.RED} - {e} {indx} / {len(data)}")
                 if chupapi.id not in penis:
                     await asyncio.sleep(0.01)
@@ -171,7 +171,7 @@ async def mass_dm():
                         if display_sleep == "True":
                             print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
                         await asyncio.sleep(pablo)
-            except discord.HTTPException:
+            except discord.HTTPException as e:
                 print(f"{Fore.BLUE}{current_time} {Fore.RED}[-] Couldn\'t fetch {Fore.YELLOW}{i}{Fore.RED} - {e} {indx} / {len(data)}")
             if chupapi.id not in penis:
                 penis.append(chupapi.id)
@@ -249,7 +249,7 @@ async def mass_dm_embed():
                             if display_sleep == "True":
                                 print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
                             await asyncio.sleep(pablo)
-                except discord.HTTPException:
+                except discord.HTTPException as e:
                     print(f"{Fore.BLUE}{current_time} {Fore.RED}[-] Couldn\'t fetch {Fore.YELLOW}{i}{Fore.RED} - {e} {indx} / {len(data)}")
                 if chupapi.id not in penis:
                     penis.append(chupapi.id)
@@ -286,7 +286,7 @@ async def mass_dm_embed():
                         if display_sleep == "True":
                             print(f"{Fore.YELLOW}Sleeping {pablo} seconds")
                         await asyncio.sleep(pablo)
-            except discord.HTTPException:
+            except discord.HTTPException as e:
                 print(f"{Fore.BLUE}{current_time} {Fore.RED}[-] Couldn\'t fetch {Fore.YELLOW}{i}{Fore.RED} - {e} {indx} / {len(data)}")
             if chupapi.id not in penis:
                 penis.append(chupapi.id)
