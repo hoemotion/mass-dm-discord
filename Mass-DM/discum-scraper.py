@@ -43,7 +43,7 @@ for memberID in members:
     total_scraped += 1
     data.append(int(memberID))
     print(f"{total_scraped}/{len(members)} - {memberID}")
-    with open("ids.json", "w") as file:
-        json.dump(data, file)
+with open("ids.json", "w") as file:
+  json.dump(data, file)
 end = time.time()
 print(f"Scraped {total_scraped} User IDs successfully\nTime Taken: {end - start}s")
