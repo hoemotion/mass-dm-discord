@@ -1,6 +1,6 @@
 # mass-dm-discord
 
-### Check out [this](https://github.com/hoemotion/Discord-Mass-DM) Mass DM repo too (it has more features)
+# Check out [this](https://github.com/hoemotion/Discord-Mass-DM) Mass DM repo too (it has more features)
 
 <img src="https://cdn.discordapp.com/attachments/821292429470466078/901142180461166662/unknown.png" width="600"/>
 <img src="https://cdn.discordapp.com/attachments/821292429470466078/901141863581499412/unknown.png" width="600"/>
